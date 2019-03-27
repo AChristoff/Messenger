@@ -5,7 +5,10 @@ function attachEvents() {
     let firstMessageKey = '';
     let historyClicked = false;
 
-    alert('\nHi there!\nWelcome to my messenger!\n\nIt`s open to the world, so please hit the "Delete History" button,\nbefore you leave the chat.\n\nThanks! \nAlex');
+    let alert = $('#alert');
+    setTimeout(() => alert.fadeIn(), 1000);
+    setTimeout(() => alert.fadeOut(), 8000);
+
 
     $('#submit').on('click', sendMessage => {
         firstMessage++;

@@ -9,6 +9,11 @@
         #headingOne {
             text-align: left;
         }
+
+        #alert {
+            display: none;
+            color: #4CAF50;
+        }
         body {
             margin: auto;
             width: 25%;
@@ -68,6 +73,20 @@
 <h1 id="headingOne">Alex`s messenger</h1>
 <div id="main">
     <textarea id="messages" cols="80" rows="12" disabled="true"></textarea>
+    <div id="alert">
+        <p>
+            Hi there!
+            Welcome to my messenger!
+            <br>
+            <br>
+            It`s open to the world, so please hit the "Delete History" button,
+            before you leave the chat.
+            <br>
+            <br>
+            Thanks!
+            <br>
+        </p>
+    </div>
     <div id="controls">
         <label for="author">Name: </label><input id="author" type="text"><br>
         <label for="content">Message: </label><input id="content" type="text">
@@ -75,6 +94,7 @@
         <input id="refresh" type="button" value="Show Chat History">
         <input id="delete" type="button" value="Delete History">
     </div>
+    <br>
 </div>
 <script src="solution.js"></script>
 <script>
