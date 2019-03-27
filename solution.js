@@ -4,23 +4,61 @@ function attachEvents() {
     let firstMessage = 0;
     let firstMessageKey = '';
     let historyClicked = false;
+    let username = '';
 
-    let alert = $('#alert');
-    setTimeout(() => alert.fadeIn(), 1000);
-    setTimeout(() => alert.fadeOut(), 8000);
+    setTimeout(() => $('#messages').text('Hi there,\nwelcome to my messenger!\n\nFeel free to try it 😃\n\nIt`s open to the world, so please hit the "Delete History" button,\nbefore you leave the chat.\n\nThanks!\nAlex'), 500);
+
+    $('#author').on('click', () => {
+        $('#author').attr('placeholder', '');
+        if (firstMessage < 1) {
+            $('#messages').text('')
+        }
+    });
+
+    $('#author').mouseout('clickUp', () => {
+        if ($('#author').val() === '' && firstMessage < 1) {
+            $('#author').attr('placeholder', 'Enter Name');
+        } else if ($('#author').val() === '') {
+            $('#author').attr('placeholder', `Your name "${username}" is now autofill`);
+        }
+    });
+
+    $('#content').on('click', () => {
+        $('#content').attr('placeholder', '');
+    });
+
+    $('#content').mouseout('clickUp', () => {
+        if ($('#content').val() === '' && firstMessage < 1) {
+            $('#content').attr('placeholder', 'Enter your message');
+        } else {
+            $('#content').attr('placeholder', 'Enter next message');
+        }
+    });
 
 
     $('#submit').on('click', sendMessage => {
         firstMessage++;
-
         let author = $('#author').val();
         let content = $('#content').val();
         let timeStamp = Date.now();
-        let message = {
-            author,
-            content,
-            timeStamp
-        };
+        let message;
+        if (author !== '') {
+            username = author;
+            message = {
+                author,
+                content,
+                timeStamp
+            };
+        } else {
+            message = {
+                author: username,
+                content,
+                timeStamp
+            };
+        }
+
+        $('#author').attr('placeholder', `Your name "${username}" is now autofill`);
+        $('#content').attr('placeholder', 'Enter next message');
 
         $.ajax({
             method: 'POST',
