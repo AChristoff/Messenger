@@ -121,19 +121,30 @@ function attachEvents() {
 
     $('#delete').on('click', deleteHistory => {
         let clearHistory = false;
-        if (confirm("Are you sure you want to delete this chat ?")) {
-            clearHistory = true;
-        }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover the messages!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                swal("The message history has been successfully deleted!", {
+                    icon: "success",
+                });
 
-        if (clearHistory) {
-            $.ajax({
-                method: 'DELETE',
-                url,
-                success: () => {
-                    $('#messages').text('No history');
-                }
-            })
-        }
+                $.ajax({
+                    method: 'DELETE',
+                    url,
+                    success: () => {
+                        $('#messages').text('No history');
+                    }
+                });
+
+            } else {
+                swal("Your message history  is safe!");
+            }
+        });
 
     });
 }
