@@ -25,6 +25,9 @@ function attachEvents() {
 
     $('#content').on('click', () => {
         $('#content').attr('placeholder', '');
+        if (firstMessage < 1) {
+            $('#messages').text('')
+        }
     });
 
     $('#content').mouseout('clickUp', () => {
@@ -117,12 +120,20 @@ function attachEvents() {
     });
 
     $('#delete').on('click', deleteHistory => {
-        $.ajax({
-            method: 'DELETE',
-            url,
-            success: () => {
-                $('#messages').text('No history');
-            }
-        })
+        let clearHistory = false;
+        if (confirm("Are you sure you want to delete this chat ?")) {
+            clearHistory = true;
+        }
+
+        if (clearHistory) {
+            $.ajax({
+                method: 'DELETE',
+                url,
+                success: () => {
+                    $('#messages').text('No history');
+                }
+            })
+        }
+
     });
 }
