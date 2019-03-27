@@ -7,7 +7,7 @@ function attachEvents() {
 
     let alert = $('#alert');
     setTimeout(() => alert.fadeIn(), 1000);
-    setTimeout(() => alert.fadeOut(), 6000);
+    setTimeout(() => alert.fadeOut(), 8000);
 
 
     $('#submit').on('click', sendMessage => {
