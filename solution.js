@@ -1,8 +1,11 @@
 function attachEvents() {
+
     const url = 'https://messanger-b24ae.firebaseio.com/messages.json';
     let firstMessage = 0;
     let firstMessageKey = '';
     let historyClicked = false;
+
+    alert('\nHi there!\nWelcome to my messenger!\n\nIt`s open to the world, so please hit the "Delete History" button,\nbefore you leave the chat.\n\nThanks! \nAlex');
 
     $('#submit').on('click', sendMessage => {
         firstMessage++;
