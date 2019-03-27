@@ -10,11 +10,6 @@
             text-align: left;
         }
 
-        #alert {
-            display: none;
-            color: #4CAF50;
-        }
-
         body {
             margin: auto;
             width: 25%;
@@ -30,24 +25,7 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-        #submit, #refresh {
-            background: #4CAF50;
-            color: white;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: block;
-        }
-        #delete {
-            background: #8E1600;
-            color: white;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: block;
-        }
+
         input[type=button]:hover {
             background: #45a049;
         }
@@ -67,6 +45,43 @@
         #submit {
             margin: 32px;
         }
+
+        #submit, #refresh {
+            padding: 12px 15px;
+            font-family: 'Open Sans', serif;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px #c0c0c0;
+        }
+
+        #delete {
+            padding: 12px 15px;
+            font-family: 'Open Sans', serif;
+            font-size: 18px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #8E1600;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px #c0c0c0;
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        
     </style>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -78,9 +93,9 @@
     <div id="controls">
         <label for="author">Name: </label><input id="author" type="text" placeholder="Enter Name"><br>
         <label for="content">Message: </label><input id="content" type="text" placeholder="Enter your message">
-        <input id="submit" type="button" value="Send">
-        <input id="refresh" type="button" value="Show Chat History">
-        <input id="delete" type="button" value="Delete History">
+        <input class="button" id="submit" type="button" value="Send">
+        <input class="button" id="refresh" type="button" value="Show Chat History">
+        <input class="button" id="delete" type="button" value="Delete History">
     </div>
     <br>
 </div>

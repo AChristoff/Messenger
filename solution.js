@@ -40,11 +40,22 @@ function attachEvents() {
 
 
     $('#submit').on('click', sendMessage => {
-        firstMessage++;
+
         let author = $('#author').val();
         let content = $('#content').val();
         let timeStamp = Date.now();
         let message;
+
+        if (author === '' && firstMessage === 0) {
+            $('#messages').text('Please enter your name!');
+            return;
+        } else if (content.includes('</script>') || content.includes('<script>') || content.includes('<script') ) {
+            $('#messages').text('For Security purposes <script> is forbidden!');
+            return;
+        } else {
+            firstMessage++;
+        }
+
         if (author !== '') {
             username = author;
             message = {
